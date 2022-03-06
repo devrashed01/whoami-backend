@@ -27,6 +27,7 @@ app.get('/api', (req, res) => {
   res.send('whoami! -> try with /profile');
 });
 app.use('/api/profile', require('./routers/user'));
+app.use('/api/skills', require('./routers/skills'));
 
 app.use((err, req, res, next) => {
   if (err.message === 'access denied') {
