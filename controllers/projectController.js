@@ -3,7 +3,14 @@ const { successSend, errorSend } = require('../utils/responseSender');
 const { updateProjectValidator } = require('../validations/projectValidator');
 
 module.exports.getProjectsController = async (req, res) => {
-  const project = await Project.find();
+  const { search } = req.query;
+
+  const filter = {};
+  if (search) {
+    filter.name = new RegExp(search, 'i');
+  }
+
+  const project = await Project.find(filter);
 
   if (!project) {
     errorSend(res, 401, 'Projects not found');

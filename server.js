@@ -36,7 +36,6 @@ app.use((err, req, res, next) => {
   } else if (err.message) {
     errorSend(res, 500, err.message);
   }
-
   next(err);
 });
 
