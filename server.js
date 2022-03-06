@@ -28,6 +28,7 @@ app.get('/api', (req, res) => {
 });
 app.use('/api/profile', require('./routers/user'));
 app.use('/api/skills', require('./routers/skills'));
+app.use('/api/projects', require('./routers/projects'));
 
 app.use((err, req, res, next) => {
   if (err.message === 'access denied') {
