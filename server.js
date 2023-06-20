@@ -10,9 +10,9 @@ const { errorSend } = require('./utils/responseSender');
 const connectDB = require('./db/connectDB');
 
 // create applications
-const app = express(); // main application
+const app = express();
 
-// middlewares
+// middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
 app.get('/api', (req, res) => {
   res.send('whoami! -> try with /profile');
 });
+app.use('/api/auth', require('./routers/auth'));
 app.use('/api/profile', require('./routers/user'));
 app.use('/api/skills', require('./routers/skills'));
 app.use('/api/projects', require('./routers/projects'));
